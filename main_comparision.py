@@ -1,7 +1,7 @@
 import sys
 from math import pi
 import pygame
-from pendulum import double_pendulum, Pendulum
+from pendulum2 import double_pendulum, Pendulum
 
 pygame.init()
 width = 1280
@@ -12,20 +12,20 @@ pygame.display.set_caption("Double Pendulum")
 clock = pygame.time.Clock()
 
 #Colors
-sweet_pink = (3, 252, 32)
+sweet_pink = (255, 56, 129)
 
 pends = []
-num = 1000
+num = 1
 
 for i in range(num):
     a_1 = 1.4 + i*0.0001
     a_2 = 1.4 + i*0.0001
     s = (i/num) * 100
     temp = pygame.Color((0,0,0))
-    temp.hsva = (127, s, 99)
-    pends.append(double_pendulum(160, 170, 1, 1, (width/2, height/2 - height/10), temp, a_1, a_2))
+    temp.hsva = (336, s, 100)
+    pends.append(double_pendulum(150, 150, 20, 20, (width/2, height/2 - height/5), sweet_pink, a_1, a_2))
 
-# single_pend = Pendulum((width/2, height/2 - height/10), 20, 300, theta= -pi/2)
+single_pend = Pendulum((width/2, height/2 - height/5), 20, 400, theta= -pi/2)
     
 
 def make_video(screen):
@@ -53,8 +53,8 @@ while True:
         pen.update()
         pen.draw(screen)
 
-    # single_pend.draw(screen)
-    # single_pend.update()
+    single_pend.draw(screen)
+    single_pend.update()
 
     if video:
         next(save_screen)
